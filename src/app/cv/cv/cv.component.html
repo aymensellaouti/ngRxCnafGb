@@ -4,6 +4,12 @@
       {{ date | date : "full" | uppercase }}
     </div>
     <app-list [cvs]="cvs$ | async"></app-list>
+    <hr />
+    <h2>Juniors</h2>
+    <app-list [cvs]="cvsJuniors$ | async"></app-list>
+    <hr />
+    <h2>Seniors</h2>
+    <app-list [cvs]="cvsSeniors$ | async"></app-list>
   </div>
   <div class="col">
     <app-cv-card></app-cv-card>
