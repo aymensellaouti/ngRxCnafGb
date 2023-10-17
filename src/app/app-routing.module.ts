@@ -10,7 +10,7 @@ import { DetailsCvComponent } from "./cv/details-cv/details-cv.component";
 
 import { authenticationGuard } from "./auth/guards/authentication.guard";
 import { detailCvResolverResolver } from "./cv/resolver/detail-cv-resolver.resolver";
-
+/* cv/5 */
 const routes: Route[] = [
   { path: "", redirectTo: "cv", pathMatch: "full" },
   { path: "login", component: LoginComponent },
@@ -35,7 +35,13 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(
+      routes /* , {
+      enableTracing: true,
+    } */
+    ),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

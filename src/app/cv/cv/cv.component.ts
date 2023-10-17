@@ -36,7 +36,7 @@ export class CvComponent {
     }); */
   }
 
-  getSelectedCv(cv: Cv) {
+  /*   getSelectedCv(cv: Cv) {
     this.selectedCv = cv;
-  }
+  } */
 }

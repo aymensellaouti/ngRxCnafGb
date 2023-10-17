@@ -10,6 +10,8 @@ import { API } from "../../../config/api.config";
 export class CvService {
   private cvs: Cv[] = [];
 
+  private selectCvSubject = new Subject<Cv>();
+  selectedCv$ = this.selectCvSubject.asObservable();
   constructor(private http: HttpClient) {
     this.cvs = [
       new Cv(1, "aymen", "sellaouti", "teacher", "as.jpg", "1234", 40),
@@ -92,5 +94,9 @@ export class CvService {
       return true;
     }
     return false;
+  }
+
+  selectCv(cv: Cv) {
+    this.selectCvSubject.next(cv);
   }
 }
