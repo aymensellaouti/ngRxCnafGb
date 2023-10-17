@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, NO_ERRORS_SCHEMA } from "@angular/core";
 import { Cv } from "../model/cv";
 import { ToastrService } from "ngx-toastr";
 import { CvService } from "../services/cv.service";
