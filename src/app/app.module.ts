@@ -24,6 +24,8 @@ import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { CvCardComponent } from './cv/cv-card/cv-card.component';
 import { TodoComponent } from './todo/todo/todo.component';
 import { TestObservableComponent } from './rxjs/test-observable/test-observable.component';
+import { FromofComponent } from './rxjs/fromof/fromof.component';
+import { SliderComponent } from './rxjs/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { TestObservableComponent } from './rxjs/test-observable/test-observable.
     NF404Component,
     LoginComponent,
     TestObservableComponent,
+    FromofComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,

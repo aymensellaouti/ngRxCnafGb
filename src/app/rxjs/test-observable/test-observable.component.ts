@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { Observable } from "rxjs";
+import { Observable, map } from "rxjs";
 
 @Component({
   selector: "app-test-observable",
@@ -20,11 +20,8 @@ export class TestObservableComponent {
         observer.next(i--);
       }, 1000);
     });
-    this.observable.subscribe((val) => {
-      console.log(val);
-    });
 
-    this.observable.subscribe({
+    this.observable.pipe(map((x) => x * 3)).subscribe({
       next: (value) => {
         this.toaster.info("" + value);
       },
@@ -34,6 +31,9 @@ export class TestObservableComponent {
       error: (e) => {
         this.toaster.error("Problème");
       },
+    });
+    this.observable.subscribe((val) => {
+      console.log(val);
     });
   }
 }
