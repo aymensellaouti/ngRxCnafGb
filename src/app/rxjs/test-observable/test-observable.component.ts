@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { Observable, map } from "rxjs";
+import { Observable, filter, map, take } from "rxjs";
 
 @Component({
   selector: "app-test-observable",
@@ -21,17 +21,26 @@ export class TestObservableComponent {
       }, 1000);
     });
 
-    this.observable.pipe(map((x) => x * 3)).subscribe({
-      next: (value) => {
-        this.toaster.info("" + value);
-      },
-      complete: () => {
-        this.toaster.warning("Fin du compte à rebours");
-      },
-      error: (e) => {
-        this.toaster.error("Problème");
-      },
-    });
+    this.observable
+      /* 5 4 3 2 1*/
+      .pipe(
+        map((x) => x * 3),
+        /* 15 12 9 6 3*/
+        filter((x) => !(x % 2)),
+        /* 12 6 */ take(1)
+        /* 12 */
+      )
+      .subscribe({
+        next: (value) => {
+          this.toaster.info("" + value);
+        },
+        complete: () => {
+          this.toaster.warning("Fin du compte à rebours");
+        },
+        error: (e) => {
+          this.toaster.error("Problème");
+        },
+      });
     this.observable.subscribe((val) => {
       console.log(val);
     });
