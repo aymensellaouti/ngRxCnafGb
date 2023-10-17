@@ -10,6 +10,7 @@ import { DetailsCvComponent } from "./cv/details-cv/details-cv.component";
 
 import { authenticationGuard } from "./auth/guards/authentication.guard";
 import { detailCvResolverResolver } from "./cv/resolver/detail-cv-resolver.resolver";
+import { ProductsComponent } from "./products/products.component";
 /* cv/5 */
 const routes: Route[] = [
   { path: "", redirectTo: "cv", pathMatch: "full" },
@@ -31,6 +32,7 @@ const routes: Route[] = [
     },
   },
   { path: "todo", component: TodoComponent },
+  { path: "products", component: ProductsComponent },
   { path: "**", component: NF404Component },
 ];
 
