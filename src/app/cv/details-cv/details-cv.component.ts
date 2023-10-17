@@ -13,7 +13,7 @@ import { Observable } from "rxjs";
   styleUrls: ["./details-cv.component.css"],
 })
 export class DetailsCvComponent implements OnInit {
-  cv$!: Observable<Cv | null>;
+  cv!: Cv | null;
   constructor(
     private cvService: CvService,
     private router: Router,
@@ -23,9 +23,9 @@ export class DetailsCvComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.params["id"];
-    this.cv$ = this.cvService.getCvById(+id);
-
+    this.cv = this.activatedRoute.snapshot.data["cv"];
+    /* this.cv$ = this.cvService.getCvById(+id);
+     */
     /* error: (e) => {
           this.router.navigate([APP_ROUTES.cv]);
         }, */
