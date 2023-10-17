@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Cv } from "../model/cv";
 import { ToastrService } from "ngx-toastr";
 import { CvService } from "../services/cv.service";
-import { Observable, catchError, of } from "rxjs";
+import { Observable, catchError, of, retry } from "rxjs";
 @Component({
   selector: "app-cv",
   templateUrl: "./cv.component.html",
@@ -15,6 +15,10 @@ export class CvComponent {
 
   constructor(private toastr: ToastrService, private cvService: CvService) {
     this.cvs$ = this.cvService.getCvs().pipe(
+      retry({
+        count: 4,
+        delay: 1500,
+      }),
       catchError((error) => {
         this.toastr.error(`
           Attention!! Les données sont fictives, problème avec le serveur.
